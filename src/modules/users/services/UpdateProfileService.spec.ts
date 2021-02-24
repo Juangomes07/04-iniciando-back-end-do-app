@@ -17,6 +17,7 @@ describe('UpdateProfile', () => {
       fakeUsersRepository,
       fakeHashProvider,
       );
+
   })
   it('should be able update the profile',async () =>{
     const user = await fakeUsersRepository.create({
@@ -106,4 +107,13 @@ describe('UpdateProfile', () => {
   })).rejects.toBeInstanceOf(AppError);
 
   });
+
+  it('should not be able update the profile from non-existing-user',async () =>{
+    await expect(updateProfile.execute({
+      user_id: 'non-existing-user',
+      name: 'Test',
+      email: 'test@example.com',
+    })).rejects.toBeInstanceOf(AppError);
+
+    });
 });
