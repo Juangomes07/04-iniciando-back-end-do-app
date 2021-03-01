@@ -1,10 +1,16 @@
-import {Column,CreateDateColumn, Entity, ObjectID, ObjectIdColumn, UpdateDateColumn} from 'typeorm';
+import {
+  ObjectID,
+  ObjectIdColumn,
+  Entity,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('notifications')
 class Notification {
   @ObjectIdColumn()
   id: ObjectID;
-
 
   @Column()
   content: string;
@@ -12,14 +18,14 @@ class Notification {
   @Column('uuid')
   recipient_id: string;
 
-  @Column({ default:false })
+  @Column({ default: false })
   read: boolean;
 
   @CreateDateColumn()
-  created_at:Date;
+  created_at: Date;
 
   @UpdateDateColumn()
-  update_at:Date;
+  updated_at: Date;
 }
 
 export default Notification;
